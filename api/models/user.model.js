@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    avatar: {
+        type: String,
+        default: "https://i.pinimg.com/originals/e8/a9/4f/e8a94f0e187fdd3cf46de390dbce58f0.jpg",
+    },
 }, {timestamps: true});
 
 const User = mongoose.model('User', userSchema);
