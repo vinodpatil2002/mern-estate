@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { useSelector } from 'react-redux';
 import { Navigation } from 'swiper/modules';
+// import { useSelector } from 'react-redux';
 import 'swiper/css/bundle';
 import {
   FaBath,
@@ -15,6 +16,7 @@ import {
   FaShare,
 } from 'react-icons/fa';
 import { list } from 'firebase/storage';
+import Contact from '../components/Contact';
 // import Contact from '../components/Contact';
 
 export default function Listing() {
@@ -127,6 +129,10 @@ export default function Listing() {
                         }
                     </li>
                 </ul>
+                {currentUser && listing.userRef !== currentUser._id && !contact 
+                    && (<button onClick={() => setContact(true)} className='bg-slate-700 text-white hover:opacity-95 p-3 rounded-lg'>Contact Landlord</button>)
+                }
+                {contact && <Contact listing={listing} />}
             </div>
             
             </>
