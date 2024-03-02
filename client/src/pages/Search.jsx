@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { set } from "mongoose";
+// import { set } from "mongoose";
+import ListingItem from "../components/ListingItem";
 
 export default function Search() {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function Search() {
         order: 'desc'
     });
     const [listings , setListings] = useState([]);
-    console.log(listings);
+    
 
     useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
@@ -159,8 +160,22 @@ export default function Search() {
                 <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">Search</button>
             </form>
         </div>
-        <div className="">
+        <div className="flex-1">
             <h1 className="text-3xl font-bold mt-5 border-b p-3 text-slate-700">Listing Results</h1>
+            <div className="flex p-7 flex-wrap gap-4 flex-1">
+                {!loading && listings.length === 0 && (
+                    <p className="text-xl text-slate-700 text-center">No listings found !</p>
+                )}
+                {loading && (
+                    <p className="text-xl text-slate-700 text-center w-full">Loading...</p>
+                )}
+                {
+                    !loading && listings && listings.map((listing) => (
+                        <ListingItem key={listing._id} listing={listing}/>
+                    ))
+                }
+
+            </div>
         </div>
     </div>
   )
