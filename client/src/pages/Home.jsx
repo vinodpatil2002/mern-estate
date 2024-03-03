@@ -57,7 +57,7 @@ function Home() {
             Find your next <span className='text-slate-500'>perfect</span> <br /> place with ease
           </h1>
           <div className="text-gray-400 text-xs sm:text-sm">
-            Vinod Properties offers the most premium properties with the best price in the market <br />
+          Reality Endeavors offers the most premium properties with the best price in the market <br />
             We have a wide range of properties to choose from.
           </div>
           <Link className='text-xs sm:text-sm  text-blue-800 font-bold hover:underline' to={'/search'}> 
